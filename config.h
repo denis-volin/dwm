@@ -6,6 +6,7 @@ static const unsigned int snap      = 0;        /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -36,9 +37,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title       tags mask     isfloating   monitor */
-	{ "firefox",      NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Thunderbird",  NULL,       NULL,       1 << 6,       0,           -1 },
+	/* class          instance    title           tags mask     isfloating  isterminal  noswallow   monitor */
+	{ "firefox",      NULL,       NULL,           1 << 1,       0,          0,          0,          -1 },
+	{ "Thunderbird",  NULL,       NULL,           1 << 6,       0,          0,          0,          -1 },
+	{ "St",           NULL,       NULL,           0,            0,          1,          0,          -1 },
+	{ NULL,           NULL,       "Event Tester", 0,            0,          0,          1,          -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -85,6 +88,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_slash,  focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_slash,  tagmon,         {.i = +1 } },
