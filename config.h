@@ -37,11 +37,15 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class          instance    title           tags mask     isfloating  isterminal  noswallow   monitor */
-	{ "firefox",      NULL,       NULL,           1 << 1,       0,          0,          0,          -1 },
-	{ "Thunderbird",  NULL,       NULL,           1 << 6,       0,          0,          0,          -1 },
-	{ "St",           NULL,       NULL,           0,            0,          1,          0,          -1 },
-	{ NULL,           NULL,       "Event Tester", 0,            0,          0,          1,          -1 }, /* xev */
+	/* class                   instance    title           tags mask     isfloating  isterminal  noswallow   monitor */
+	{ "firefox",               NULL,       NULL,           1 << 1,       0,          0,          0,          -1 },
+	{ "Nextcloud",             NULL,       NULL,           1 << 1,       0,          0,          0,          -1 },
+	{ "KeePassXC",             NULL,       NULL,           1 << 2,       0,          0,          0,          -1 },
+	{ "winbox.exe",            NULL,       NULL,           1 << 3,       0,          0,          0,          -1 },
+	{ "org.remmina.Remmina",   NULL,       NULL,           1 << 4,       0,          0,          0,          -1 },
+	{ "Thunderbird",           NULL,       NULL,           1 << 6,       0,          0,          0,          -1 },
+	{ "St",                    NULL,       NULL,           0,            0,          1,          0,          -1 },
+	{ NULL,                    NULL,       "Event Tester", 0,            0,          0,          1,          -1 }, /* xev */
 };
 
 /* layout(s) */
